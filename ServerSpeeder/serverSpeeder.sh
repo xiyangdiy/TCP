@@ -93,7 +93,7 @@ rm -rf /etc/serverSpeeder.conf >/dev/null 2>&1
 [ -f /appex/bin/serverSpeeder.sh ] && bash /appex/bin/serverSpeeder.sh uninstall -f >/dev/null 2>&1
 rm -rf /appex >/dev/null 2>&1
 rm -rf /tmp/appex* >/dev/null 2>&1
-echo -ne '锐速已被删除! \n\n\n'
+echo -ne 'serverSpeeder 已被移除! \n\n\n'
 exit 0
 }
 
