@@ -11,6 +11,10 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyang
 ```
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyangdiy/TCP/master/LotServer/LotServer.sh) install <Kernel Version>
 ```
+#### 查看当前内核版本
+```
+uname -r
+```
 
 ## 完全卸载
 ```
