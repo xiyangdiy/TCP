@@ -1,4 +1,4 @@
-# lotServer
+# serverSpeeder
 
 
 ## 用户安装
@@ -10,6 +10,10 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyang
 ### 指定内核安装
 ```
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.sh) install <Kernel Version>
+```
+#### 查看当前内核版本
+```
+uname -r
 ```
 
 ## 完全卸载
