@@ -108,7 +108,7 @@ MAC=$(ifconfig "$Eth" |awk '/HWaddr/{ print $5 }')
 [ -z "$MAC" ] && Uninstall && echo "找不到MAC地址!" && exit 1
 wget --no-check-certificate -q -O "/appex/etc/apx.lic" "https://moeclub.azurewebsites.net/lic?mac=$MAC"
 [ "$(du -b /appex/etc/apx.lic |awk '{ print $1 }')" -ne '152' ] && Uninstall && echo 错误!无法生成许可证,请稍后再试." && exit 1
-echo "许可证成功生成!"
+echo ""许可证成功生成!"
 [ -n $(which ethtool) ] && rm -rf /appex/bin/ethtool && cp -f $(which ethtool) /appex/bin
 }
 
@@ -127,4 +127,4 @@ sed -i "s/^apxexe\=.*/apxexe\=\"\/appex\/bin\/$APXEXE\"/" /tmp/appex/apxfiles/et
 [ $# == '1' ] && [ "$1" == 'install' ] && KNK="$(uname -r)" && Install;
 [ $# == '1' ] && [ "$1" == 'uninstall' ] && Welcome && pause && Uninstall;
 [ $# == '2' ] && [ "$1" == 'install' ] && KNK="$2" && Install;
-echo -ne "用法:\n     bash $0 [install |uninstall |install '{serverSpeeder的内核版本}']\n"
+echo -ne ""用法:\n     bash $0 [install |uninstall |install '{serverSpeeder的内核版本}']\n"
