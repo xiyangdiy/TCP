@@ -3,7 +3,7 @@
 function Welcome()
 {
 clear
-echo -n"           服务器时间: "&& date "+%F [%T]";
+echo "             服务器时间: "&& date "+%F [%T]";
 echo "            ======================================================";
 echo "            |                                                    |";
 echo "            |                      lotServer                     |";
