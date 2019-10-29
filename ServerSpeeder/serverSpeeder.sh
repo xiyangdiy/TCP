@@ -128,5 +128,3 @@ sed -i "s/^apxexe\=.*/apxexe\=\"\/appex\/bin\/$APXEXE\"/" /tmp/appex/apxfiles/et
 [ $# == '1' ] && [ "$1" == 'uninstall' ] && Welcome && pause && Uninstall;
 [ $# == '2' ] && [ "$1" == 'install' ] && KNK="$2" && Install;
 echo -ne "用法:\n     bash $0 [install |uninstall |install '{serverSpeeder的内核版本}']\n"
-
-
