@@ -4,12 +4,12 @@
 ## 用户安装
 ### 常规自动安装
 ```
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.sh) install
+wget --no-check-certificate -O serverSpeeder.sh https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.sh && chmod +x serverSpeeder.sh && bash serverSpeeder.sh install
 ```
 
 ### 指定内核安装
 ```
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.sh) install <Kernel Version>
+wget --no-check-certificate -O serverSpeeder.sh https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.sh && chmod +x serverSpeeder.sh && bash serverSpeeder.sh install <Kernel Version>
 ```
 #### 查看当前内核版本
 ```
@@ -18,7 +18,7 @@ uname -r
 
 ## 完全卸载
 ```
-bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.sh) uninstall
+wget --no-check-certificate -O serverSpeeder.sh https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.sh && chmod +x serverSpeeder.sh && bash serverSpeeder.sh uninstall
 ```
 
 ## 用法
