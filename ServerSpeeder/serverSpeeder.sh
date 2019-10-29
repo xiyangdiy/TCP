@@ -48,7 +48,7 @@ ifconfig >/dev/null 2>&1
 [ ! -f /proc/net/dev ] && echo -ne "找不到网络设备! \n\n" && exit 1;
 [ -n "$(grep 'eth0:' /proc/net/dev)" ] && Eth=eth0 || Eth=`cat /proc/net/dev |awk -F: 'function trim(str){sub(/^[ \t]*/,"",str); sub(/[ \t]*$/,"",str); return str } NR>2 {print trim($1)}'  |grep -Ev '^lo|^sit|^stf|^gif|^dummy|^vmnet|^vir|^gre|^ipip|^ppp|^bond|^tun|^tap|^ip6gre|^ip6tnl|^teql|^venet' |awk 'NR==1 {print $0}'`
 [ -z "$Eth" ] && echo "找不到服务器公共以太网! " && exit 1
-URLKernel='https://raw.githubusercontent.com/0oVicero0/serverSpeeder_kernel/master/serverSpeeder.txt'
+URLKernel='https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.txt'
 AcceVer=$(wget --no-check-certificate -qO- "$URLKernel" |grep "$KNA/" |grep "/x$KNB/" |grep "/$KNK/" |awk -F'/' '{print $NF}' |sort -n -k 2 -t '_' |tail -n 1)
 MyKernel=$(wget --no-check-certificate -qO- "$URLKernel" |grep "$KNA/" |grep "/x$KNB/" |grep "/$KNK/" |grep "$AcceVer" |tail -n 1)
 [ -z "$MyKernel" ] && echo -ne "内核不匹配! \n请手动更改内核, 然后再试一次! \n\n查看serverSpeeder.txt以获取详细信息! \n\n\n" && exit 1
@@ -59,7 +59,7 @@ function SelectKernel()
 {
 KNN=$(echo $MyKernel |awk -F '/' '{ print $2 }') && [ -z "$KNN" ] && Uninstall && echo "错误，未匹配! " && exit 1
 KNV=$(echo $MyKernel |awk -F '/' '{ print $5 }') && [ -z "$KNV" ] && Uninstall && echo "错误，未匹配! " && exit 1
-wget --no-check-certificate -q -O "/tmp/appex/apxfiles/bin/acce-"$KNV"-["$KNA"_"$KNN"_"$KNK"]" "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_kernel/master/$MyKernel"
+wget --no-check-certificate -q -O "/tmp/appex/apxfiles/bin/acce-"$KNV"-["$KNA"_"$KNN"_"$KNK"]" "https://github.com/xiyangdiy/TCP/raw/master/ServerSpeeder/$MyKernel"
 [ ! -f "/tmp/appex/apxfiles/bin/acce-"$KNV"-["$KNA"_"$KNN"_"$KNK"]" ] && Uninstall && echo "下载错误，找不到 acce-$KNV-[$KNA_$KNN_$KNK]! " && exit 1
 }
 
@@ -114,7 +114,7 @@ echo "许可证成功生成!"
 
 function ServerSpeeder()
 {
-[ ! -f /tmp/appex.zip ] && wget --no-check-certificate -q -O "/tmp/appex.zip" "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.zip"
+[ ! -f /tmp/appex.zip ] && wget --no-check-certificate -q -O "/tmp/appex.zip" "https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/appex.zip"
 [ ! -f /tmp/appex.zip ] && Uninstall && echo "错误！未找到appex.zip! " && exit 1
 mkdir -p /tmp/appex
 unzip -o -d /tmp/appex /tmp/appex.zip
