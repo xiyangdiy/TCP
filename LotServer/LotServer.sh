@@ -3,12 +3,11 @@
 function Welcome()
 {
 clear
-echo -n "                      Local Time :   " && date "+%F [%T]       ";
+echo -n"           服务器时间: "&& date "+%F [%T]";
 echo "            ======================================================";
+echo "            |                                                    |";
 echo "            |                      lotServer                     |";
-echo "            |                                     for Linux      |";
-echo "            |----------------------------------------------------|";
-echo "            |                                  -- By MoeClub.org |";
+echo "            |                                                    |";
 echo "            ======================================================";
 echo "";
 root_check;
@@ -19,14 +18,14 @@ cd /tmp
 function root_check()
 {
 if [[ $EUID -ne 0 ]]; then
-  echo "Error:This script must be run as root!" 1>&2
+  echo "错误:脚本必须以root用户执行!" 1>&2
   exit 1
 fi
 }
 
 function pause()
 {
-read -n 1 -p "Press Enter to Continue..." INP
+read -n 1 -p "请按回车键继续..." INP
 if [ "$INP" != '' ] ; then
   echo -ne '\b \n'
   echo "";
@@ -56,25 +55,25 @@ function acce_check()
 function Install()
 {
   Welcome;
-  echo 'Preparatory work...'
+  echo '准备安装...'
   Uninstall;
   dep_check;
   [ -f /etc/redhat-release ] && KNA=$(awk '{print $1}' /etc/redhat-release)
   [ -f /etc/os-release ] && KNA=$(awk -F'[= "]' '/PRETTY_NAME/{print $3}' /etc/os-release)
   [ -f /etc/lsb-release ] && KNA=$(awk -F'[="]+' '/DISTRIB_ID/{print $2}' /etc/lsb-release)
   KNB=$(getconf LONG_BIT)
-  [ ! -f /proc/net/dev ] && echo -ne "I can not find network device! \n\n" && exit 1;
+  [ ! -f /proc/net/dev ] && echo -ne "找不到网络设备! \n\n" && exit 1;
   Eth_List=`cat /proc/net/dev |awk -F: 'function trim(str){sub(/^[ \t]*/,"",str); sub(/[ \t]*$/,"",str); return str } NR>2 {print trim($1)}'  |grep -Ev '^lo|^sit|^stf|^gif|^dummy|^vmnet|^vir|^gre|^ipip|^ppp|^bond|^tun|^tap|^ip6gre|^ip6tnl|^teql|^venet' |awk 'NR==1 {print $0}'`
-  [ -z "$Eth_List" ] && echo "I can not find the server pubilc Ethernet! " && exit 1
+  [ -z "$Eth_List" ] && echo "找不到服务器公共以太网! " && exit 1
   Eth=$(echo "$Eth_List" |head -n1)
-  [ -z "$Eth" ] && Uninstall "Error! Not found a valid ether. "
+  [ -z "$Eth" ] && Uninstall "错误!找不到有效的以太网."
   Mac=$(cat /sys/class/net/${Eth}/address)
-  [ -z "$Mac" ] && Uninstall "Error! Not found mac code. "
+  [ -z "$Mac" ] && Uninstall "错误!找不到MAC地址."
   URLKernel='https://raw.githubusercontent.com/xiyangdiy/TCP/master/LotServer/lotServer.log'
   AcceData=$(wget --no-check-certificate -qO- "$URLKernel")
   AcceVer=$(echo "$AcceData" |grep "$KNA/" |grep "/x$KNB/" |grep "/$KNK/" |awk -F'/' '{print $NF}' |sort -nk 2 -t '_' |tail -n1)
   MyKernel=$(echo "$AcceData" |grep "$KNA/" |grep "/x$KNB/" |grep "/$KNK/" |grep "$AcceVer" |tail -n1)
-  [ -z "$MyKernel" ] && echo -ne "Kernel not be matched! \nYou should change kernel manually, and try again! \n\nView the link to get details: \n"$URLKernel" \n\n\n" && exit 1
+  [ -z "$MyKernel" ] && echo -ne "内核不匹配! \n请手动更改内核,再重复一次! \n\n请查看链接以获取详细信息: \n"$URLKernel" \n\n\n" && exit 1
   pause;
   KNN=$(echo "$MyKernel" |awk -F '/' '{ print $2 }') && [ -z "$KNN" ] && Uninstall "Error! Not Matched. "
   KNV=$(echo "$MyKernel" |awk -F '/' '{ print $5 }') && [ -z "$KNV" ] && Uninstall "Error! Not Matched. "
@@ -84,14 +83,14 @@ function Install()
   mkdir -p "${AcceTmp}/bin/"
   mkdir -p "${AcceTmp}/etc/"
   wget --no-check-certificate -qO "${AcceTmp}/bin/${AcceBin}" "https://raw.githubusercontent.com/xiyangdiy/TCP/master/LotServer/${MyKernel}"
-  [ ! -f "${AcceTmp}/bin/${AcceBin}" ] && Uninstall "Download Error! Not Found ${AcceBin}. "
+  [ ! -f "${AcceTmp}/bin/${AcceBin}" ] && Uninstall "下载错误!找不到${AcceBin}."
   Welcome;
   wget --no-check-certificate -qO "/tmp/lotServer.tar" "https://raw.githubusercontent.com/xiyangdiy/TCP/master/LotServer/lotServer.tar"
   tar -xvf "/tmp/lotServer.tar" -C /tmp
   acce_ver=$(acce_check ${KNV})
   wget --no-check-certificate -qO "${AcceTmp}/etc/apx.lic" "https://api.moeclub.org/lotServer?ver=${acce_ver}&mac=${Mac}"
-  [ "$(du -b ${AcceTmp}/etc/apx.lic |cut -f1)" -lt '152' ] && Uninstall "Error! I can not generate the Lic for you, Please try again later. "
-  echo "Lic generate success! "
+  [ "$(du -b ${AcceTmp}/etc/apx.lic |cut -f1)" -lt '152' ] && Uninstall "c错误!无法生成许可文件,请稍后再试."
+  echo "许可证成功生成!"
   sed -i "s/^accif\=.*/accif\=\"$Eth\"/" "${AcceTmp}/etc/config"
   sed -i "s/^apxexe\=.*/apxexe\=\"\/appex\/bin\/$AcceBin\"/" "${AcceTmp}/etc/config"
   bash "${AcceRoot}/install.sh" -in 1000000 -out 1000000 -t 0 -r -b -i ${Eth}
@@ -127,7 +126,7 @@ function Uninstall()
   [ -f /appex/bin/serverSpeeder.sh ] && AppexName="serverSpeeder" && bash /appex/bin/serverSpeeder.sh uninstall -f >/dev/null 2>&1
   rm -rf /appex >/dev/null 2>&1
   rm -rf /tmp/*${AppexName}* >/dev/null 2>&1
-  [ -n "$1" ] && echo -ne "$AppexName has been removed! \n" && echo "$1" && echo -ne "\n\n\n" && exit 0
+  [ -n "$1" ] && echo -ne "$AppexName 已被移除! \n" && echo "$1" && echo -ne "\n\n\n" && exit 0
 }
 
 if [ $# == '1' ]; then
@@ -136,7 +135,7 @@ if [ $# == '1' ]; then
 elif [ $# == '2' ]; then
   [ "$1" == 'install' ] && KNK="$2" && Install;
 else
-  echo -ne "Usage:\n     bash $0 [install |uninstall |install '{Kernel Version}']\n"
+  echo -ne "用法:\n     bash $0 [install |uninstall |install '{Kernel Version}']\n"
 fi
 
 
