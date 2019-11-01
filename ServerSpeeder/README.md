@@ -15,6 +15,10 @@ wget --no-check-certificate -O serverSpeeder.sh https://raw.githubusercontent.co
 ```
 uname -r
 ```
+#### 内核列表
+```
+https://github.com/xiyangdiy/TCP/blob/master/ServerSpeeder/serverSpeeder.txt
+```
 
 ## 完全卸载
 ```
