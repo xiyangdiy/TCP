@@ -22,7 +22,7 @@ uname -r
 ```
 #### 内核列表
 ```
-https://github.com/xiyangdiy/TCP/blob/master/ServerSpeeder/serverSpeeder.txt
+https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/serverSpeeder.txt
 ```
 
 ## 完全卸载
