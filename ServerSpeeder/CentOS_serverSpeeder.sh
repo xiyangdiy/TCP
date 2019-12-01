@@ -47,8 +47,8 @@ fi
 function Install_Kernel()
 {
 if [ "$c" == "Release:	6" ];then
-   wget --no-check-certificate https://github.com/xiyangdiy/TCP/blob/master/ServerSpeeder/Kernel/CentOS%206/kernel-2.6.32-504.3.3.el6.x86_64.rpm
-   wget --no-check-certificate https://github.com/xiyangdiy/TCP/blob/master/ServerSpeeder/Kernel/CentOS%206/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm
+   wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%206/kernel-2.6.32-504.3.3.el6.x86_64.rpm
+   wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%206/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm
    sleep 2
    rpm -ivh kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm --force
    sleep 2   
@@ -61,7 +61,7 @@ if [ "$c" == "Release:	6" ];then
    fi
 
 elif [ "$c" == "Release:	7" ];then
-   wget --no-check-certificate https://github.com/xiyangdiy/TCP/blob/master/ServerSpeeder/Kernel/CentOS%207/kernel-3.10.0-229.1.2.el7.x86_64.rpm
+   wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%207/kernel-3.10.0-229.1.2.el7.x86_64.rpm
    sleep 2
    rpm -ivh kernel-3.10.0-229.1.2.el7.x86_64.rpm --force  
    
