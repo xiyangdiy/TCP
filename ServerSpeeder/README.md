@@ -4,7 +4,7 @@
 ## 用户安装
 ### Centos 6/7 安装
 ```
-wget --no-check-certificate -O CentOS_serverSpeeder.sh https://github.com/xiyangdiy/TCP/blob/master/ServerSpeeder/CentOS_serverSpeeder.sh && chmod +x CentOS_serverSpeeder.sh && bash CentOS_serverSpeeder.sh install
+wget --no-check-certificate -O CentOS_serverSpeeder.sh https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/CentOS_serverSpeeder.sh && chmod +x CentOS_serverSpeeder.sh && bash CentOS_serverSpeeder.sh install
 ```
 
 ### 常规自动安装
