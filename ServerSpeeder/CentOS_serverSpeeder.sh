@@ -54,22 +54,48 @@ if [ "$c" == "Release:	6" ];then
    sleep 2   
    rpm -ivh kernel-2.6.32-504.3.3.el6.x86_64.rpm --force  
    
-   echo "内核更换完成,需要重启!"   
-   read -n 1 -p "请按回车键确认重启,或按Ctrl+C取消。" INP
-   if [ "$INP" == '' ] ; then
-      reboot
-   fi
+   echo "内核更换完成,需要重启!"  
+   while true
+         do
+	         read -r -p "现在重启? [Y/N] " input
+	         case $input in
+	         [yY][eE][sS]|[yY])
+			   reboot
+			   exit 1
+			   ;;
+	        [nN][oO]|[nN])
+			   exit 1	       	
+			   ;;
+	         *)
+			   ;;
+         esac
+   done
 
 elif [ "$c" == "Release:	7" ];then
    wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%207/kernel-3.10.0-229.1.2.el7.x86_64.rpm
    sleep 2
    rpm -ivh kernel-3.10.0-229.1.2.el7.x86_64.rpm --force  
    
-   echo "内核更换完成,需要重启!"   
-   read -n 1 -p "请按回车键确认重启,或按Ctrl+C取消。" INP
-   if [ "$INP" == '' ] ; then
-      reboot
-   fi
+   echo "内核更换完成,需要重启!"  
+   while true
+         do
+	         read -r -p "现在重启? [Y/N] " input
+	         case $input in
+	         [yY][eE][sS]|[yY])
+			   reboot
+			   exit 1
+			   ;;
+	        [nN][oO]|[nN])
+			   exit 1	       	
+			   ;;
+	         *)
+			   ;;
+         esac
+   done
+
+else
+   echo "当前系统不是CentOS 6/7"
+   exit 1
 fi
 }
 
