@@ -1,6 +1,9 @@
 ## 下载：  
 ```
-wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/Save/master/Kernel/CentOS%206/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm  
+wget --no-check-certificate https://github.com/xiyangdiy/TCP/blob/master/ServerSpeeder/Kernel/CentOS%206/kernel-2.6.32-504.3.3.el6.x86_64.rpm
+```
+```
+wget --no-check-certificate 
 ```
 ## 安装：
 ```  
