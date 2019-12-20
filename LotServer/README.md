@@ -11,6 +11,10 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyang
 ```
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyangdiy/TCP/master/LotServer/LotServer.sh) install <Kernel Version>
 ```
+##### Ubuntu 16.04
+```
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/xiyangdiy/TCP/master/LotServer/LotServer.sh) install 4.4.0-142-generic
+```
 #### 查看当前内核版本
 ```
 uname -r
