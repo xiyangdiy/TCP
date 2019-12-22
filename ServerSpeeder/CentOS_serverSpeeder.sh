@@ -16,6 +16,7 @@ cd /tmp
 }
 
 a=$(lsb_release -i)
+a=${a:16:6}
 b=$(uname -r)
 c=$(lsb_release -r)
 c=${b::10}
