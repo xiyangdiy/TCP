@@ -23,7 +23,7 @@ c=${b::10}
 
 function Check_Kernel()
 {
-if [ "$a" != "Distributor ID: CentOS" ];then
+if [ "$a" != "CentOS" ];then
    echo "当前系统不是CentOS"
    exit 1
 fi
