@@ -49,7 +49,7 @@ function Install_Kernel()
 {
 if [ "$c" == "6" ];then
    echo "开始更换内核......"
-   echo "请稍等！"
+   echo "请稍等!"
    wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%206/kernel-2.6.32-504.3.3.el6.x86_64.rpm
    wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%206/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm
    sleep 2
@@ -57,7 +57,8 @@ if [ "$c" == "6" ];then
    sleep 2   
    rpm -ivh kernel-2.6.32-504.3.3.el6.x86_64.rpm --force  
    
-   echo "内核更换完成,需要重启!"  
+   echo "内核更换完成,需要重启!"
+   echo "开机后,请再次执行本脚本!"
    while true
          do
 	         read -r -p "现在重启? [Y/N] " input
@@ -81,7 +82,8 @@ elif [ "$c" == "7" ];then
    sleep 2
    rpm -ivh kernel-3.10.0-229.1.2.el7.x86_64.rpm --force  
    
-   echo "内核更换完成,需要重启!"  
+   echo "内核更换完成,需要重启!"
+   echo "开机后,请再次执行本脚本!"
    while true
          do
 	         read -r -p "现在重启? [Y/N] " input
