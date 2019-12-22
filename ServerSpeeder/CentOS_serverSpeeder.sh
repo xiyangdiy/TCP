@@ -19,7 +19,7 @@ a=$(lsb_release -i)
 a=${a:16:6}
 b=$(uname -r)
 c=$(lsb_release -r)
-c=${9::1}
+c=${c:9:1}
 
 function Check_Kernel()
 {
