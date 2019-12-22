@@ -48,6 +48,8 @@ fi
 function Install_Kernel()
 {
 if [ "$c" == "6" ];then
+   echo "开始更换内核......"
+   echo "请稍等！"
    wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%206/kernel-2.6.32-504.3.3.el6.x86_64.rpm
    wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%206/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm
    sleep 2
@@ -73,6 +75,8 @@ if [ "$c" == "6" ];then
    done
 
 elif [ "$c" == "7" ];then
+   echo "开始更换内核......"
+   echo "请稍等！"
    wget --no-check-certificate https://raw.githubusercontent.com/xiyangdiy/TCP/master/ServerSpeeder/Kernel/CentOS%207/kernel-3.10.0-229.1.2.el7.x86_64.rpm
    sleep 2
    rpm -ivh kernel-3.10.0-229.1.2.el7.x86_64.rpm --force  
